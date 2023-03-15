@@ -9,7 +9,34 @@
 
 */
 import ArticleShape from "./ArticleShape";
+import PropTypes from "prop-types";
 
 export default function TitlesView({ articles, setCurrentArticle }) {
-  return <ul>Titles go here</ul>;
+ 
+  const copyArticles = [...articles].sort((a, b) =>
+  a.title.localeCompare(b.title)
+);
+
+const returnArticle = (article) => {
+  setCurrentArticle(article);
+};
+
+return (
+  <ul>
+    {copyArticles.map((article) => (
+      <li
+        key={article.title}
+        data-testid="title"
+        onClick={() => returnArticle(article)}
+      >
+        {article.title}
+      </li>
+    ))}
+  </ul>
+);
+}
+
+TitlesView.propTypes = {
+  articles: PropTypes.arrayOf(ArticleShape).isRequired,
+  setCurrentArticle: PropTypes.func.isRequired
 }

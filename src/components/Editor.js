@@ -18,5 +18,12 @@
 
 import ArticleShape from "./ArticleShape";
 import styles from "../styles/Editor.module.css";
+import propTypes from "prop-types";
 
-export default function Editor({ article, complete }) {
+export default function Editor({ article, complete }) {}
+
+
+Editor.propTypes = {
+  article: ArticleShape.isRequired,
+  complete: propTypes.func.isRequired
+};

@@ -9,7 +9,35 @@
 
 */
 import styles from "../styles/SectionsView.module.css";
+import PropTypes from "prop-types";
+import ArticleShape from "./ArticleShape";
 
 export default function SectionsView({ sections, selectSection }) {
-  return <div className={styles.sectionList}>Sections go here</div>;
+  
+  const copySections = [...sections].sort();
+
+  const reportSelected = (section) => {
+    selectSection(section);
+  };
+  
+  return (
+    <div className={styles.sectionList}>
+      <ul>
+        {copySections.map((section) => (
+          <li
+            key={section}
+            data-testid="section"
+            onClick={() => reportSelected(section)}
+          >
+            {section}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+SectionsView.propTypes = {
+  sections: ArticleShape.isRequired,
+  selectSection: PropTypes.func.isRequired
 }

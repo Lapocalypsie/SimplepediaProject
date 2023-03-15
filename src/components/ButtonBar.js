@@ -12,8 +12,13 @@
     allowEdit - a Boolean indicating if there is something that could be edited (required)
     handleClick - a function called when a button is clicked (required)
 */
+import PropTypes from "prop-types";
 
 export default function ButtonBar({ allowEdit, handleClick }) {
   return <div>Buttons</div>;
 }
 
+ButtonBar.propTypes = {
+  allowEdit: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired
+}
