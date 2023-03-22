@@ -15,10 +15,17 @@
 import PropTypes from "prop-types";
 
 export default function ButtonBar({ allowEdit, handleClick }) {
-  return <div>Buttons</div>;
+  console.log(allowEdit);
+
+  return (
+    <div>
+      <button onClick={() => handleClick("add")}>Add</button>
+      {allowEdit && <button onClick={() => handleClick("edit")}>Edit</button>}
+    </div>
+  );
 }
 
 ButtonBar.propTypes = {
   allowEdit: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired
-}
+  handleClick: PropTypes.func.isRequired,
+};

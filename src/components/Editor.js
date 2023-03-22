@@ -19,11 +19,75 @@
 import ArticleShape from "./ArticleShape";
 import styles from "../styles/Editor.module.css";
 import propTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+export default function Editor({ article, complete }) {
+  const router = useRouter();
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
 
-export default function Editor({ article, complete }) {}
+  const enterTitle = (event) => {
+    setTitle(event.target.value);
+  };
 
+  const enterContent = (event) => {
+    setContents(event.target.value);
+  };
+
+  const saveClick = () => {
+    if (title) {
+      const date = new Date().toISOString();
+      const newArticle = { title: title, contents: contents, edited: date };
+      complete(newArticle);
+      router.push(`/articles/${newArticle.id}`);
+    }
+  };
+
+  const cancelClick = () => {
+    router.push(`/articles`);
+  };
+
+  useEffect(() => {
+    if (article) {
+      if (article.title !== title) {
+        setTitle(article.title);
+      }
+      if (article.contents !== contents) {
+        setContents(article.contents);
+      }
+    }
+  }, [article, contents, title]);
+
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={enterTitle}
+          placeholder="Enter a title please"
+        />
+      </div>
+      <div>
+        <textarea
+          id="body"
+          value={contents}
+          onChange={enterContent}
+          placeholder="Write the content of your article here..."
+        />
+      </div>
+      <div className={styles.button}>
+        <button onClick={cancelClick}>Cancel</button>
+        <button onClick={saveClick} disabled={!title}>
+          Save
+        </button>
+      </div>
+    </div>
+  );
+}
 
 Editor.propTypes = {
-  article: ArticleShape.isRequired,
-  complete: propTypes.func.isRequired
+  article: ArticleShape,
+  complete: propTypes.func.isRequired,
 };

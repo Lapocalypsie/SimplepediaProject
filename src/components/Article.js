@@ -8,25 +8,19 @@
 */
 import styles from "../styles/Article.module.css";
 import ArticleShape from "./ArticleShape";
-import PropTypes from "prop-types";
-
-
 
 export default function Article({ article }) {
-  
-  
   const stringDate = new Date(article.edited).toLocaleString();
 
-
-   return (
+  return (
     <div className={styles.article}>
-      <h2>{title}</h2>
-      <p>{contents}</p>
+      <h2>{article.title}</h2>
+      <p>{article.contents}</p>
       <p className={styles.timestamp}> {stringDate}</p>
     </div>
   );
 }
 
 Article.propTypes = {
-  article : ArticleShape.isRequired
+  article: ArticleShape.isRequired,
 };

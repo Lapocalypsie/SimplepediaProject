@@ -10,16 +10,15 @@
 */
 import styles from "../styles/SectionsView.module.css";
 import PropTypes from "prop-types";
-import ArticleShape from "./ArticleShape";
+//import ArticleShape from "./ArticleShape";
 
 export default function SectionsView({ sections, selectSection }) {
-  
   const copySections = [...sections].sort();
 
   const reportSelected = (section) => {
     selectSection(section);
   };
-  
+
   return (
     <div className={styles.sectionList}>
       <ul>
@@ -38,6 +37,6 @@ export default function SectionsView({ sections, selectSection }) {
 }
 
 SectionsView.propTypes = {
-  sections: ArticleShape.isRequired,
-  selectSection: PropTypes.func.isRequired
-}
+  sections: PropTypes.arrayOf(Object).isRequired,
+  selectSection: PropTypes.func.isRequired,
+};
