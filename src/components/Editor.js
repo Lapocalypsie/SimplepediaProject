@@ -37,14 +37,28 @@ export default function Editor({ article, complete }) {
   const saveClick = () => {
     if (title) {
       const date = new Date().toISOString();
-      const newArticle = { title: title, contents: contents, edited: date };
-      complete(newArticle);
-      router.push(`/articles/${newArticle.id}`);
+      if (article !== null) {
+        const newArticle = {
+          id: article.id,
+          title: title,
+          contents: contents,
+          edited: date,
+        };
+        complete(newArticle);
+      } else {
+        const newArticle = {
+          id: 0,
+          title: title,
+          contents: contents,
+          edited: date,
+        };
+        complete(newArticle);
+      }
     }
   };
 
   const cancelClick = () => {
-    router.push(`/articles`);
+    router.back();
   };
 
   useEffect(() => {
@@ -56,7 +70,7 @@ export default function Editor({ article, complete }) {
         setContents(article.contents);
       }
     }
-  }, [article, contents, title]);
+  }, [article]);
 
   return (
     <div>

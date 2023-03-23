@@ -15,8 +15,6 @@
 import PropTypes from "prop-types";
 
 export default function ButtonBar({ allowEdit, handleClick }) {
-  console.log(allowEdit);
-
   return (
     <div>
       <button onClick={() => handleClick("add")}>Add</button>

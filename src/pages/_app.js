@@ -22,7 +22,7 @@ function MainApp({ Component, pageProps }) {
     if (article === undefined) {
       router.push("/articles");
     } else {
-      router.push(`${article.id}`);
+      router.push(`/articles/${article.id}`);
     }
   }
 

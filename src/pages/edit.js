@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Editor from "../../components/Editor";
-import ArticleShape from "../../components/ArticleShape";
-import styles from "../../styles/Editor.module.css";
+import Editor from "../components/Editor";
+import ArticleShape from "../components/ArticleShape";
+import styles from "../styles/Editor.module.css";
 import PropTypes from "prop-types";
 
 export default function SimplepediaCreator({
@@ -11,7 +11,6 @@ export default function SimplepediaCreator({
   setCurrentArticle,
 }) {
   const router = useRouter();
-  // eslint-disable-next-line no-unused-vars
   const [article, setArticle] = useState(null);
 
   const complete = (newArticle) => {
@@ -29,6 +28,7 @@ export default function SimplepediaCreator({
       setCollection([...collection, createdArticle]);
       // Set the current article to the newly created one
       setCurrentArticle(createdArticle);
+      setArticle(createdArticle);
     } else {
       // User canceled, go back to previous page
       router.back();

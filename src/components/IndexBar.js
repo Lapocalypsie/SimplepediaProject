@@ -26,24 +26,27 @@ export default function IndexBar({
   function getFirstChar(stringc) {
     return stringc.charAt(0);
   }
+
   function filterArray(arr) {
     return arr.filter((stringc, index) => arr.indexOf(stringc) === index);
   }
+
   let firstLetter = copyCollection.map((article) =>
     getFirstChar(article.title)
   );
+
   firstLetter = filterArray(firstLetter);
 
   function changeSelectedSection(section) {
     setSelectedSection(section);
     setCurrentArticle(undefined);
   }
+
   useEffect(() => {
     if (currentArticle) {
-      // eslint-disable-next-line no-shadow
-      const firstLetter = getFirstChar(currentArticle.title);
-      if (firstLetter !== selectedSection) {
-        setSelectedSection(firstLetter);
+      const compareletter = getFirstChar(currentArticle.title);
+      if (compareletter !== selectedSection) {
+        setSelectedSection(compareletter);
       }
     }
   }, [currentArticle, selectedSection]);
