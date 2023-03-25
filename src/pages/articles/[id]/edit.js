@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import { useRouter } from "next/router";
 import Editor from "../../../components/Editor";
 import ArticleShape from "../../../components/ArticleShape";
@@ -36,7 +35,6 @@ export default function SimplepediaEditor({
       setCollection(newCollection);
       // Set the current article to the newly created one
       setCurrentArticle(createdArticle);
-
       router.push(`/articles/${createdArticle.id}`);
     } else {
       // User canceled, go back to previous page

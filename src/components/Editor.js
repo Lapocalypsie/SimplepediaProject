@@ -35,23 +35,13 @@ export default function Editor({ article, complete }) {
   const saveClick = () => {
     if (title) {
       const date = new Date().toISOString();
-      if (article !== null) {
-        const newArticle = {
-          id: article.id,
-          title: title,
-          contents: contents,
-          edited: date,
-        };
-        complete(newArticle);
-      } else {
-        const newArticle = {
-          id: 0,
-          title: title,
-          contents: contents,
-          edited: date,
-        };
-        complete(newArticle);
-      }
+      const newArticle = {
+        id: article?.id || 0,
+        title: title,
+        contents: contents,
+        edited: date,
+      };
+      complete(newArticle);
     }
   };
 
