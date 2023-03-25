@@ -20,9 +20,7 @@ import ArticleShape from "./ArticleShape";
 import styles from "../styles/Editor.module.css";
 import propTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 export default function Editor({ article, complete }) {
-  const router = useRouter();
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
 
@@ -57,9 +55,9 @@ export default function Editor({ article, complete }) {
     }
   };
 
-  const cancelClick = () => {
-    router.back();
-  };
+  function cancelClick() {
+    complete();
+  }
 
   useEffect(() => {
     if (article) {
@@ -70,7 +68,9 @@ export default function Editor({ article, complete }) {
         setContents(article.contents);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
+  //If we add title and contents to the dependency array then we can't change them anymore
 
   return (
     <div>
