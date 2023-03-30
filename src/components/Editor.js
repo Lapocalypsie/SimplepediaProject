@@ -35,8 +35,9 @@ export default function Editor({ article, complete }) {
   const saveClick = () => {
     if (title) {
       const date = new Date().toISOString();
+
       const newArticle = {
-        id: article?.id || 0,
+        id: article?.id !== undefined ? article.id : undefined,
         title: title,
         contents: contents,
         edited: date,
@@ -51,12 +52,8 @@ export default function Editor({ article, complete }) {
 
   useEffect(() => {
     if (article) {
-      if (article.title !== title) {
-        setTitle(article.title);
-      }
-      if (article.contents !== contents) {
-        setContents(article.contents);
-      }
+      setTitle(article.title);
+      setContents(article.contents);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);

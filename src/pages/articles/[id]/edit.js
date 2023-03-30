@@ -14,15 +14,11 @@ export default function SimplepediaEditor({
 
   const complete = (newArticle) => {
     if (newArticle) {
-      if (newArticle.id === 0) {
-        const maxId = collection.reduce((acc, cur) => Math.max(acc, cur.id), 0);
-        newArticle.id = maxId;
-      }
       const createdArticle = {
         id: newArticle.id,
         title: newArticle.title,
         contents: newArticle.contents,
-        edited: newArticle.edited,
+        edited: [...currentArticle.edited, newArticle.edited],
       };
       const newCollection = collection.map((article) => {
         if (article.id === currentArticle.id) {

@@ -15,14 +15,14 @@ export default function SimplepediaCreator({
 
   const complete = (newArticle) => {
     if (newArticle) {
-      // Find largest id in collection
       const maxId = collection.reduce((acc, cur) => Math.max(acc, cur.id), 0);
+
       // Create new article with unique id
       const createdArticle = {
         id: maxId + 1,
         title: newArticle.title,
         contents: newArticle.contents,
-        edited: newArticle.edited,
+        edited: [...newArticle.edited],
       };
       // Add new article to collection
       setCollection([...collection, createdArticle]);
