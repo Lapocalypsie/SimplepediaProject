@@ -37,7 +37,7 @@ export default function Editor({ article, complete }) {
       const date = new Date().toISOString();
 
       const newArticle = {
-        id: article?.id !== undefined ? article.id : undefined,
+        ...article,
         title: title,
         contents: contents,
         edited: date,
@@ -55,7 +55,6 @@ export default function Editor({ article, complete }) {
       setTitle(article.title);
       setContents(article.contents);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
   //If we add title and contents to the dependency array then we can't change them anymore
 

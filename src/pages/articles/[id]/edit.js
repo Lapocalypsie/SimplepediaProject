@@ -14,15 +14,9 @@ export default function SimplepediaEditor({
 
   const complete = (newArticle) => {
     if (newArticle) {
-      const createdArticle = {
-        id: newArticle.id,
-        title: newArticle.title,
-        contents: newArticle.contents,
-        edited: [...currentArticle.edited, newArticle.edited],
-      };
       const newCollection = collection.map((article) => {
         if (article.id === currentArticle.id) {
-          return createdArticle;
+          return newArticle;
         } else {
           return article;
         }
@@ -30,8 +24,8 @@ export default function SimplepediaEditor({
       // Add new article to collection
       setCollection(newCollection);
       // Set the current article to the newly created one
-      setCurrentArticle(createdArticle);
-      router.push(`/articles/${createdArticle.id}`);
+      setCurrentArticle(newArticle);
+      router.push(`/articles/${newArticle.id}`);
     } else {
       // User canceled, go back to previous page
       router.back();

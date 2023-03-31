@@ -19,10 +19,8 @@ export default function SimplepediaCreator({
 
       // Create new article with unique id
       const createdArticle = {
+        ...newArticle,
         id: maxId + 1,
-        title: newArticle.title,
-        contents: newArticle.contents,
-        edited: [...newArticle.edited],
       };
       // Add new article to collection
       setCollection([...collection, createdArticle]);
