@@ -1,8 +1,8 @@
 {
-  "name": "assignment03",
+  "name": "practical-frameworks",
   "version": "0.1.0",
   "private": true,
-  "author": "Your name <email@middlebury.edu>",
+  "author": "Jimmy Rasolosoa <jrasolosoa@middlebury.edu>",
   "contributors": [
     "Christopher Andrews <candrews@middlebury.edu>",
     "Michael Linderman <mlinderman@middlebury.edu>",
@@ -19,8 +19,14 @@
     "gradescope": "zip -r gradescope.zip setup.sh run_autograder assessment"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.7",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.0",
     "next": "13.2.1",
     "react": "18.2.0",
+    "react-bootstrap-validation": "^0.1.11",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.9.0",
     "uuid": "^9.0.0"

@@ -22,21 +22,22 @@ export default function Simplepedia({
 
   return (
     <>
-      <IndexBar
-        collection={collection}
-        setCurrentArticle={setCurrentArticle}
-        currentArticle={currentArticle}
-      />
-      {currentArticle ? (
-        <Article
-          article={currentArticle}
-          setCurrentArticle={setCurrentArticle}
-        />
-      ) : null}
       <ButtonBar
         allowEdit={currentArticle !== undefined}
         handleClick={handleClick}
       />
+      <IndexBar
+        collection={collection}
+        setCurrentArticle={setCurrentArticle}
+        currentArticle={currentArticle}
+      >
+        {currentArticle ? (
+          <Article
+            article={currentArticle}
+            setCurrentArticle={setCurrentArticle}
+          />
+        ) : null}
+      </IndexBar>
     </>
   );
 }

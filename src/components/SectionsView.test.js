@@ -18,7 +18,7 @@ describe("SectionsView tests", () => {
     render(
       <SectionsView sections={sampleSections} selectSection={jest.fn()} />
     );
-    const items = await screen.findAllByRole("listitem");
+    const items = await screen.getAllByTestId("section");
     expect(items).toHaveLength(sampleSections.length);
   });
 
@@ -34,19 +34,22 @@ describe("SectionsView tests", () => {
   });
 
   test("Sections are displayed in alphabetical order", async () => {
-    const scrambledSections = ["G", "Z", "A", "2", "1"];
     render(
       <SectionsView
         sections={[...scrambledSections]}
         selectSection={jest.fn()}
       />
     );
+    const items = await screen.getAllByTestId("section");
 
     const sortedSections = [...scrambledSections];
 
+    sortedSections.forEach((section, i) =>
+      expect(items[i]).toHaveTextContent(new RegExp(`^${section}`))
+    );
+
     sortedSections.sort((t1, t2) => t1.localeCompare(t2));
 
-    const items = await screen.findAllByRole("listitem");
     const displayedSections = items.map((item) => item.innerHTML);
 
     expect(displayedSections).toEqual(sortedSections);

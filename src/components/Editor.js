@@ -20,6 +20,8 @@ import ArticleShape from "./ArticleShape";
 import styles from "../styles/Editor.module.css";
 import propTypes from "prop-types";
 import React, { useState, useEffect } from "react";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
 export default function Editor({ article, complete }) {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
@@ -61,27 +63,37 @@ export default function Editor({ article, complete }) {
   return (
     <div>
       <div>
-        <input
-          type="text"
+        <TextField
+          required
+          fullWidth
+          margin="normal"
           id="title"
           value={title}
           onChange={enterTitle}
-          placeholder="Enter a title please"
+          label="Title"
+          error={!title}
+          helperText={!title ? "Title can't be blank" : " "}
         />
       </div>
       <div>
-        <textarea
-          id="body"
+        <TextField
+          fullWidth
+          multiline
+          rows={10}
+          margin="normal"
+          id="contents"
           value={contents}
           onChange={enterContent}
-          placeholder="Write the content of your article here..."
+          label="Contents"
         />
       </div>
       <div className={styles.button}>
-        <button onClick={cancelClick}>Cancel</button>
-        <button onClick={saveClick} disabled={!title}>
-          Save
-        </button>
+        <Stack spacing={2} direction="row">
+          <button onClick={cancelClick}>Cancel</button>
+          <button onClick={saveClick} disabled={!title}>
+            Save
+          </button>
+        </Stack>
       </div>
     </div>
   );

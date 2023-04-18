@@ -10,33 +10,38 @@
 */
 import ArticleShape from "./ArticleShape";
 import PropTypes from "prop-types";
+import { styled } from "@mui/material/styles";
 
 export default function TitlesView({ articles, setCurrentArticle }) {
- 
   const copyArticles = [...articles].sort((a, b) =>
-  a.title.localeCompare(b.title)
-);
+    a.title.localeCompare(b.title)
+  );
 
-const returnArticle = (article) => {
-  setCurrentArticle(article);
-};
+  const returnArticle = (article) => {
+    setCurrentArticle(article);
+  };
 
-return (
-  <ul>
-    {copyArticles.map((article) => (
-      <li
-        key={article.title}
-        data-testid="title"
-        onClick={() => returnArticle(article)}
-      >
-        {article.title}
-      </li>
-    ))}
-  </ul>
-);
+  const NoBulletList = styled("ul")(() => ({
+    listStyle: "none",
+    paddingLeft: 0,
+  }));
+
+  return (
+    <ul>
+      {copyArticles.map((article) => (
+        <NoBulletList
+          key={article.title}
+          data-testid="title"
+          onClick={() => returnArticle(article)}
+        >
+          {article.title}
+        </NoBulletList>
+      ))}
+    </ul>
+  );
 }
 
 TitlesView.propTypes = {
   articles: PropTypes.arrayOf(ArticleShape).isRequired,
-  setCurrentArticle: PropTypes.func.isRequired
-}
+  setCurrentArticle: PropTypes.func.isRequired,
+};

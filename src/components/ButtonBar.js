@@ -13,13 +13,15 @@
     handleClick - a function called when a button is clicked (required)
 */
 import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export default function ButtonBar({ allowEdit, handleClick }) {
   return (
-    <div>
-      <button onClick={() => handleClick("add")}>Add</button>
-      {allowEdit && <button onClick={() => handleClick("edit")}>Edit</button>}
-    </div>
+    <ButtonGroup variant="contained" sx={{ my: 2 }}>
+      <Button onClick={() => handleClick("add")}>Add</Button>
+      {allowEdit && <Button onClick={() => handleClick("edit")}>Edit</Button>}
+    </ButtonGroup>
   );
 }
 
