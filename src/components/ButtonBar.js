@@ -13,8 +13,9 @@
     handleClick - a function called when a button is clicked (required)
 */
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Button from "@mui/material/Button";
 
 export default function ButtonBar({ allowEdit, handleClick }) {
   return (

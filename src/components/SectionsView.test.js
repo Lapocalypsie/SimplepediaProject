@@ -44,17 +44,12 @@ describe("SectionsView tests", () => {
     );
     const sortedSections = [...scrambledSections];
 
-    const items = await screen.getAllByTestId("section");
+    sortedSections.sort((t1, t2) => t1.localeCompare(t2));
 
+    const items = await screen.getAllByTestId("section");
     sortedSections.forEach((section, i) =>
       expect(items[i]).toHaveTextContent(new RegExp(`^${section}`))
     );
-
-    sortedSections.sort((t1, t2) => t1.localeCompare(t2));
-
-    const displayedSections = items.map((item) => item.innerHTML);
-
-    expect(displayedSections).toEqual(sortedSections);
   });
 
   test("Props are not mutated", () => {
