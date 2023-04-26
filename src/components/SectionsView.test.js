@@ -35,7 +35,6 @@ describe("SectionsView tests", () => {
 
   test("Sections are displayed in alphabetical order", async () => {
     const scrambledSections = ["G", "Z", "A", "2", "1"];
-
     render(
       <SectionsView
         sections={[...scrambledSections]}
