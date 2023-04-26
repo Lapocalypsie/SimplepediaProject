@@ -34,15 +34,17 @@ describe("SectionsView tests", () => {
   });
 
   test("Sections are displayed in alphabetical order", async () => {
+    const scrambledSections = ["G", "Z", "A", "2", "1"];
+
     render(
       <SectionsView
         sections={[...scrambledSections]}
         selectSection={jest.fn()}
       />
     );
-    const items = await screen.getAllByTestId("section");
-
     const sortedSections = [...scrambledSections];
+
+    const items = await screen.getAllByTestId("section");
 
     sortedSections.forEach((section, i) =>
       expect(items[i]).toHaveTextContent(new RegExp(`^${section}`))

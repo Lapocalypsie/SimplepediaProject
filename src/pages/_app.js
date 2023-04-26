@@ -19,6 +19,7 @@ function MainApp({
   emotionCache = clientSideEmotionCache,
 }) {
   const [collection, setCollection] = useState(data);
+
   // We need an alternate name for theme since it is used above
   const Footer = styled("footer")(({ theme: styledTheme }) => ({
     borderTop: "1px solid #eaeaea",
@@ -28,6 +29,7 @@ function MainApp({
     marginTop: styledTheme.spacing(5),
     paddingTop: styledTheme.spacing(2),
   }));
+
   const router = useRouter();
   const { id } = router.query;
 

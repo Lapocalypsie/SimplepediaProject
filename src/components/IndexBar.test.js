@@ -24,7 +24,7 @@ describe("IndexBar: Basic IndexBar functionality", () => {
   });
 
   test("IndexBar: Fetches and displays sections", async () => {
-    const items = await screen.findAllByRole("listitem");
+    const items = await screen.getAllByTestId("section");
 
     expect(items).toHaveLength(sampleSections.length);
     sampleSections.forEach((section) => {
