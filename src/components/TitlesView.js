@@ -27,17 +27,17 @@ export default function TitlesView({ articles, setCurrentArticle }) {
   }));
 
   return (
-    <ul>
+    <NoBulletList>
       {copyArticles.map((article) => (
-        <NoBulletList
+        <li
           key={article.title}
           data-testid="title"
           onClick={() => returnArticle(article)}
         >
           {article.title}
-        </NoBulletList>
+        </li>
       ))}
-    </ul>
+    </NoBulletList>
   );
 }
 

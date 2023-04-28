@@ -18,7 +18,7 @@ describe("TitlesView tests", () => {
     render(
       <TitlesView articles={[...articles]} setCurrentArticle={jest.fn()} />
     );
-    const items = await screen.getAllByTestId("title");
+    const items = await screen.findAllByRole("listitem");
     expect(items).toHaveLength(articles.length);
   });
 
@@ -41,7 +41,7 @@ describe("TitlesView tests", () => {
     const sortedTitles = articles.map((article) => article.title);
     sortedTitles.sort((t1, t2) => t1.localeCompare(t2));
 
-    const items = await screen.getAllByTestId("title");
+    const items = await screen.findAllByRole("listitem");
     const displayedTitles = items.map((item) => item.innerHTML);
 
     expect(displayedTitles).toEqual(sortedTitles);
